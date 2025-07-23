@@ -8,7 +8,7 @@ dotenv.config()
 const app = express();
 const PORT = process.env.PORT || 3000
 app.use(cors({
-  origin: ["http://localhost:4200"],
+  origin: ["http://localhost:4200", "https://meu-site-theta-gilt.vercel.app/login"],
   methods: ["GET", "PUT", "POST", "DELETE"],
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
   credentials: true,
