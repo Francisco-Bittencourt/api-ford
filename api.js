@@ -7,8 +7,16 @@ dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 3000
+const allowedOrigins = ["http://localhost:4200", "https://meu-site-theta-gilt.vercel.app"]
+
 app.use(cors({
-  origin: ["http://localhost:4200", "https://meu-site-theta-gilt.vercel.app/login"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "PUT", "POST", "DELETE"],
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
   credentials: true,
