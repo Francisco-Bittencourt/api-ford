@@ -7,7 +7,7 @@ dotenv.config()
 
 const app = express();
 const PORT = process.env.PORT || 3000
-const allowedOrigins = ["http://localhost:4200", "https://meu-site-theta-gilt.vercel.app"]
+const allowedOrigins = ["http://localhost:4200", "https://desafio-final-ford.vercel.app"]
 
 app.use(cors({
   origin: function (origin, callback) {
