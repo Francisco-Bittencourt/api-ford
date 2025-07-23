@@ -8,6 +8,10 @@ app.use(cors());
 
 app.use(express.json());
 
+// Esta linha 'express.static' pode causar problemas no Vercel para servir arquivos estáticos
+// se não houver uma pasta 'img' na raiz do seu deploy ou se o Vercel não for configurado
+// para servir arquivos estáticos junto com a função serverless.
+// Por enquanto, vamos manter, mas se o 404 persistir, pode ser um ponto a investigar.
 app.use(express.static(path.join(__dirname)));
 
 class ApiError extends Error {
@@ -173,6 +177,10 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(3001, () => {
-  console.log("API running on http://localhost:3001/");
-});
+// REMOVA ESTA LINHA:
+// app.listen(3001, () => {
+//   console.log("API running on http://localhost:3001/");
+// });
+
+// ADICIONE ESTA LINHA NO FINAL DO ARQUIVO:
+module.exports = app;
