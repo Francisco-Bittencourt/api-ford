@@ -180,10 +180,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-// REMOVA ESTA LINHA:
-// app.listen(3001, () => {
-//   console.log("API running on http://localhost:3001/");
-// });
+app.listen(PORT, () => {
+  console.log("API running on http://localhost:3001/");
+});
 
 // ADICIONE ESTA LINHA NO FINAL DO ARQUIVO:
 module.exports = app;
